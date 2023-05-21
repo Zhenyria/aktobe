@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: ${AKTOBE_DB_URL:jdbc:postgresql://localhost:5433/aktobe}
+    username: ${AKTOBE_DB_USERNAME:user}
+    password: ${AKTOBE_DB_PASSWORD:password}
+    driverClassName: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+  sql:
+    init:
+      mode: never
+
+server:
+  servlet:
+    encoding:
+      charset: UTF-8 # Charset of HTTP requests and responses. Added to the "Content-Type" header if not set explicitly
+      enabled: true # Enable http encoding support
+      force: true
