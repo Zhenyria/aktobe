@@ -19,6 +19,7 @@
     <properties>
         <java.version>17</java.version>
         <spring.version>2.7.12</spring.version>
+        <liquibase.version>4.22.0</liquibase.version>
         <lombok.version>1.18.26</lombok.version>
         <maven-compilier-plugin.version>3.11.0</maven-compilier-plugin.version>
         <postgresql.version>42.6.0</postgresql.version>
@@ -36,6 +37,17 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>${liquibase.version}</version>
         </dependency>
 
         <!-- Util -->
@@ -86,6 +98,16 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+
+            <!-- DB migration -->
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>${liquibase.version}</version>
+                <configuration>
+                    <propertyFile>db/liquibase.properties</propertyFile>
                 </configuration>
             </plugin>
         </plugins>
